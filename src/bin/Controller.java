@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.Region;
-import javafx.stage.Window;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 
@@ -44,12 +43,19 @@ public class Controller {
 
     private static LocalDate datumAusEingabe(String eingabeDatum) {
 
-        String[] datumGetrennt = eingabeDatum.split("[.]");
-        int tag = Integer.parseInt(datumGetrennt[0]);
-        int monat = Integer.parseInt(datumGetrennt[1]);
-        int jahr = Integer.parseInt(datumGetrennt[2]);
+        LocalDate datum;
 
-        return new LocalDate(jahr, monat, tag);
+        String[] datumGetrennt = eingabeDatum.split("[.]");
+
+        if (datumGetrennt.length !=3) {
+            datum = new LocalDate(9999, 12, 31);
+        } else {
+            int tag = Integer.parseInt(datumGetrennt[0]);
+            int monat = Integer.parseInt(datumGetrennt[1]);
+            int jahr = Integer.parseInt(datumGetrennt[2]);
+            datum = new LocalDate(jahr, monat, tag);
+        }
+        return datum;
     }
 
     private static int restTageJE(LocalDate datum) {
@@ -108,22 +114,38 @@ public class Controller {
         } else {
 
             double versPraemieDouble = Double.parseDouble(versPraemie.getText().replace(',', '.'));
-            postEingang = datumAusEingabe(postEingangsDatum.getEditor().getText());
-            auszahlung = datumAusEingabe(auszahlungsDatum.getEditor().getText());
-            versDauer = restTageSonstige(auszahlung, postEingang);
-            versRestLfz = restTageJE(auszahlung);
-            ergebnis.setText(erstattungBerechnen(versPraemieDouble, versDauer, versRestLfz));
 
-            if (versDauer == 1)
-                versDauerErgebnis.setText(String.format("Versicherungsdauer: %d Tag", versDauer));
-            else
-                versDauerErgebnis.setText(String.format("Versicherungsdauer: %d Tage", versDauer));
+            if (datumAusEingabe(postEingangsDatum.getEditor().getText()).toString().equals("9999-12-31"))
+                datumFehlerAlert();
+            else if (datumAusEingabe(auszahlungsDatum.getEditor().getText()).toString().equals("9999-12-31"))
+                datumFehlerAlert();
+            else {
+                postEingang = datumAusEingabe(postEingangsDatum.getEditor().getText());
+                auszahlung = datumAusEingabe(auszahlungsDatum.getEditor().getText());
+                versDauer = restTageSonstige(auszahlung, postEingang);
+                versRestLfz = restTageJE(auszahlung);
+                ergebnis.setText(erstattungBerechnen(versPraemieDouble, versDauer, versRestLfz));
 
-            if (versRestLfz == 1)
-                versRestErgebnis.setText(String.format("Versicherungsrestlaufzeit: %d Tag", versRestLfz));
-            else
-                versRestErgebnis.setText(String.format("Versicherungsrestlaufzeit: %d Tage", versRestLfz));
+                if (versDauer == 1)
+                    versDauerErgebnis.setText(String.format("Versicherungsdauer: %d Tag", versDauer));
+                else
+                    versDauerErgebnis.setText(String.format("Versicherungsdauer: %d Tage", versDauer));
+
+                if (versRestLfz == 1)
+                    versRestErgebnis.setText(String.format("Versicherungsrestlaufzeit: %d Tag", versRestLfz));
+                else
+                    versRestErgebnis.setText(String.format("Versicherungsrestlaufzeit: %d Tage", versRestLfz));
+            }
         }
+    }
+
+    private void datumFehlerAlert(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Fehler");
+        alert.setHeaderText("Datumsformat falsch");
+        alert.setContentText("Bitte geben Sie das Datum im Format TT.MM.JJJJ ein oder wählen Sie einen Tag über den Kalender aus.");
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.showAndWait();
     }
     @FXML
     public void kopierenButton(ActionEvent e){
@@ -136,6 +158,7 @@ public class Controller {
 
     @FXML
     public void ueberMenuItem(ActionEvent e){
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Über...");
         alert.setHeaderText("Version: 1.0 Build 20180621");
