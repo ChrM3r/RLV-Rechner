@@ -22,19 +22,19 @@
           <AnchorPane maxHeight="680.0" maxWidth="285.0" minHeight="680.0" minWidth="285.0" prefHeight="680.0" prefWidth="285.0" scaleShape="false">
               <Button layoutX="34.0" layoutY="434.0" maxHeight="40.0" maxWidth="220.0" minHeight="40.0" minWidth="220.0" mnemonicParsing="false" onAction="#berechnenButton" prefHeight="40.0" prefWidth="220.0" text="Erstattungsbetrag berechnen" />
       
-                 <DatePicker id="auszahlungsDatum" fx:id="auszahlungsDatum" layoutX="34.0" layoutY="221.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" prefHeight="30.0" prefWidth="220.0" />
+                 <DatePicker id="auszahlungsDatum" fx:id="auszahlungsDatum" layoutX="34.0" layoutY="221.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="220.0" showWeekNumbers="true" />
       
-                 <DatePicker id="postEingangsDatum" fx:id="postEingangsDatum" layoutX="34.0" layoutY="298.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" prefHeight="30.0" prefWidth="220.0" />
+                 <DatePicker id="postEingangsDatum" fx:id="postEingangsDatum" layoutX="34.0" layoutY="298.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="220.0" />
       
                  <Label layoutX="34.0" layoutY="194.0" maxHeight="25.0" maxWidth="220.0" minHeight="25.0" minWidth="220.0" prefHeight="25.0" prefWidth="220.0" text="Auszahlungsdatum:" />
       
                  <Label layoutX="35.0" layoutY="272.0" maxHeight="25.0" maxWidth="220.0" minHeight="25.0" minWidth="220.0" prefHeight="25.0" prefWidth="220.0" text="Eingang Widerrufserklärung:" />
       
-                 <NumberTextField id="versPraemie" fx:id="versPraemie" layoutX="34.0" layoutY="378.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="187.0" onAction="#berechnenButton" prefHeight="30.0" prefWidth="188.0" />
+                 <NumberTextField id="versPraemie" fx:id="versPraemie" layoutX="34.0" layoutY="378.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="187.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#berechnenButton" prefHeight="30.0" prefWidth="188.0" />
       
                  <Label layoutX="35.0" layoutY="351.0" maxHeight="25.0" maxWidth="220.0" minHeight="25.0" minWidth="220.0" prefHeight="25.0" prefWidth="220.0" text="Versicherungsprämie:" />
       
-                 <TextField id="ergebnis" fx:id="ergebnis" editable="false" layoutX="34.0" layoutY="526.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="123.0" prefHeight="30.0" prefWidth="140.0" />
+                 <TextField id="ergebnis" fx:id="ergebnis" editable="false" layoutX="34.0" layoutY="526.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="123.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="140.0" />
       
                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="160.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="285.0" />
       
