@@ -1,0 +1,10 @@
+.date-picker > .text-field {
+    -fx-text-alignment: right;
+    -fx-alignment: baseline-right;
+}
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-text-alignment: right;
+    -fx-alignment: baseline-right;
+}

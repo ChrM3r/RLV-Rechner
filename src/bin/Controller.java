@@ -8,14 +8,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
+import javafx.util.StringConverter;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
+//import org.joda.time.format.DateTimeFormatter;
 
 import javafx.event.ActionEvent;
-
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -28,6 +32,12 @@ public class Controller {
     private DatePicker postEingangsDatum = new DatePicker();
     @FXML
     private DatePicker auszahlungsDatum = new DatePicker();
+
+    private final DateTimeFormatter fastFormatter = DateTimeFormatter.ofPattern("ddMMuuuu");
+    private final DateTimeFormatter defaultFormatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+
+
+
     @FXML
     private NumberTextField versPraemie = new NumberTextField();
     @FXML
@@ -191,4 +201,5 @@ public class Controller {
     public void exitItem(ActionEvent e) {
         Platform.exit();
     }
+
 }

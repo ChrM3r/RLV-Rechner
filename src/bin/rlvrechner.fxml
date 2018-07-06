@@ -20,11 +20,11 @@
    <Group VBox.vgrow="NEVER">
       <children>
           <AnchorPane maxHeight="680.0" maxWidth="285.0" minHeight="680.0" minWidth="285.0" prefHeight="680.0" prefWidth="285.0" scaleShape="false">
-              <Button layoutX="34.0" layoutY="434.0" maxHeight="40.0" maxWidth="220.0" minHeight="40.0" minWidth="220.0" mnemonicParsing="false" onAction="#berechnenButton" prefHeight="40.0" prefWidth="220.0" text="Erstattungsbetrag berechnen" />
+              <Button layoutX="34.0" layoutY="440.0" maxHeight="40.0" maxWidth="220.0" minHeight="40.0" minWidth="220.0" mnemonicParsing="false" onAction="#berechnenButton" prefHeight="40.0" prefWidth="220.0" text="Erstattungsbetrag berechnen" />
       
-                 <DatePicker id="auszahlungsDatum" fx:id="auszahlungsDatum" layoutX="34.0" layoutY="221.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="220.0" showWeekNumbers="true" />
+                 <DatePicker id="auszahlungsDatum" fx:id="auszahlungsDatum" layoutX="34.0" layoutY="221.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="220.0" showWeekNumbers="true" />
       
-                 <DatePicker id="postEingangsDatum" fx:id="postEingangsDatum" layoutX="34.0" layoutY="298.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="220.0" />
+                 <DatePicker id="postEingangsDatum" fx:id="postEingangsDatum" layoutX="34.0" layoutY="298.0" maxHeight="30.0" maxWidth="220.0" minHeight="30.0" minWidth="220.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="220.0" showWeekNumbers="true" />
       
                  <Label layoutX="34.0" layoutY="194.0" maxHeight="25.0" maxWidth="220.0" minHeight="25.0" minWidth="220.0" prefHeight="25.0" prefWidth="220.0" text="Auszahlungsdatum:" />
       
