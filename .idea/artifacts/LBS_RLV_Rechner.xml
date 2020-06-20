@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="LBS RLV Rechner">
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="bin.Main" />
+        <option name="description" value="Tool zur Berechnung des Erstattungsbetrags für widerrufene Risikolebensversicherungen" />
+        <option name="height" value="650" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="LBS RLV Rechner" />
+        <option name="vendor" value="Chris Merscher" />
+        <option name="version" value="1.0" />
+        <option name="width" value="220" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="module-output" name="LBS RLV Rechner" />
+    </root>
+  </artifact>
+</component>

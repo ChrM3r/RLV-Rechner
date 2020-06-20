@@ -8,18 +8,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
-import javafx.util.StringConverter;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
-//import org.joda.time.format.DateTimeFormatter;
 
 import javafx.event.ActionEvent;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -32,12 +28,6 @@ public class Controller {
     private DatePicker postEingangsDatum = new DatePicker();
     @FXML
     private DatePicker auszahlungsDatum = new DatePicker();
-
-    private final DateTimeFormatter fastFormatter = DateTimeFormatter.ofPattern("ddMMuuuu");
-    private final DateTimeFormatter defaultFormatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-
-
-
     @FXML
     private NumberTextField versPraemie = new NumberTextField();
     @FXML
@@ -47,12 +37,21 @@ public class Controller {
     @FXML
     private Label versRestErgebnis = new Label();
 
-    private static int restTageSonstige(LocalDate datum1, LocalDate datum2) {
+
+    public static int restTageSonstige(LocalDate datum1, LocalDate datum2) {
 
         return Days.daysBetween(datum1, datum2).getDays();
     }
 
-    private static LocalDate datumAusEingabe(String eingabeDatum) {
+    public static int restTageJE(LocalDate datum) {
+
+        Calendar cal = new GregorianCalendar();
+        LocalDate jahresEnde = new LocalDate(cal.get(Calendar.YEAR), 12, 31);
+
+        return Days.daysBetween(datum, jahresEnde).getDays();
+    }
+
+    public static LocalDate datumAusEingabe(String eingabeDatum) {
 
         LocalDate datum;
 
@@ -69,15 +68,7 @@ public class Controller {
         return datum;
     }
 
-    private static int restTageJE(LocalDate datum) {
-
-        Calendar cal = new GregorianCalendar();
-        LocalDate jahresEnde = new LocalDate(cal.get(Calendar.YEAR), 12, 31);
-
-        return Days.daysBetween(datum, jahresEnde).getDays();
-    }
-
-    private static String erstattungBerechnen(double versPraemie, int versDauer, int versRestLfz) {
+    public static String erstattungBerechnen(double versPraemie, int versDauer, int versRestLfz) {
 
         double ergebnis = versPraemie - ((versPraemie * versDauer) / versRestLfz);
 
@@ -88,7 +79,7 @@ public class Controller {
         return dFormat.format(ergebnis);
 
     }
-    private static String tausenderZeichen(String eingabe) {
+    public static String tausenderZeichen(String eingabe) {
 
         DecimalFormat df = (DecimalFormat) (DecimalFormat.getInstance(Locale.GERMAN));
         DecimalFormatSymbols symbols = df.getDecimalFormatSymbols();
@@ -191,7 +182,7 @@ public class Controller {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Über...");
-        alert.setHeaderText("Version: 1.0 Build 20180622");
+        alert.setHeaderText("Version: 1.0 Build 20180713");
         alert.setContentText("Chris Merscher \nLBS Ostdeutsche Landesbausparkasse AG \n71-30 Anwendungsbetreuung und -entwicklung");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.showAndWait();
