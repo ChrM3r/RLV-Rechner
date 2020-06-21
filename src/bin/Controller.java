@@ -70,7 +70,12 @@ public class Controller {
 
     public static String erstattungBerechnen(double versPraemie, int versDauer, int versRestLfz) {
 
-        double ergebnis = versPraemie - ((versPraemie * versDauer) / versRestLfz);
+        double ergebnis;
+
+        if (versRestLfz <= 0)
+            throw new ArithmeticException();
+        else
+            ergebnis = versPraemie - ((versPraemie * versDauer) / versRestLfz);
 
         DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
         dfs.setDecimalSeparator(',');
